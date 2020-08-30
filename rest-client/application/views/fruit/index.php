@@ -1,3 +1,12 @@
+<script>
+    $('.action').tooltip(options);
+
+    function deleteConfirm(url){
+        $('#btn-delete').attr('href', url);
+        $('#deleteModal').modal();
+    }
+</script>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -35,7 +44,7 @@
                             <td class="text-center action">
                                 <a href="#" class="btn btn-info btn-circle m-2" data-toggle="tooltip" data-placement="top" title="Detail"><i class="fas fa-info-circle"></i></a>
                                 <a href="<?= site_url('fruits/edit/'.$fruit->id); ?>" class="btn btn-success btn-circle m-2" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="btn btn-danger btn-circle m-2" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash"></i></a>
+                                <a href="#!" onclick="deleteConfirm('<?= site_url('fruits/delete/'.$fruit->id); ?>')" class="btn btn-danger btn-circle m-2" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                         <?php $index++; ?>
@@ -52,6 +61,21 @@
 </div>
 <!-- End of Main Content -->
 
-<script>
-    $('.action').tooltip(options);
-</script>
+<!-- modal delete -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">Deleted data will not be restored.</div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a id="btn-delete" class="btn btn-danger" href="#">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
