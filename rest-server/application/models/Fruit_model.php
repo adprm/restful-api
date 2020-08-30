@@ -11,4 +11,10 @@ class Fruit_model extends CI_Model {
         }
     }
 
+    public function deleteFruits($id)
+    {
+        $this->db->delete('fruits', ['id' => $id]);
+        return $this->db->affected_rows();
+    }
+
 }
