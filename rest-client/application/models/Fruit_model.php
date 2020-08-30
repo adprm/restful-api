@@ -39,7 +39,7 @@ class Fruit_model extends CI_Model {
 
     public function delete($id) {
         $this->_deleteImage($id);
-        $this->db->delete('fruits', array('id' => $id));
+        return $this->db->delete('fruits', array('id' => $id));
     }
 
     private function _uploadImage() {
