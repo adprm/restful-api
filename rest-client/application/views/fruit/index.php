@@ -35,7 +35,7 @@
                     </thead>
                     <tbody>
                         <?php $index = 1; ?>
-                        
+
                         <?php foreach($fruits as $fruit) : ?>
                         <tr>
                             <td><?= $index; ?></td>
@@ -43,7 +43,7 @@
                             <td><?= $fruit->price; ?></td>
                             <td class="text-center"><img src="<?php echo base_url('assets/img/'.$fruit->image); ?>" width="64" /></td>
                             <td class="text-center action">
-                                <a href="#" class="btn btn-info btn-circle m-2" data-toggle="tooltip" data-placement="top" title="Detail"><i class="fas fa-info-circle"></i></a>
+                                <a href="<?= site_url('fruits/detail/'.$fruit->id); ?>" class="btn btn-info btn-circle m-2" data-toggle="tooltip" data-placement="top" title="Detail"><i class="fas fa-info-circle"></i></a>
                                 <a href="<?= site_url('fruits/edit/'.$fruit->id); ?>" class="btn btn-success btn-circle m-2" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
                                 <a href="#!" onclick="deleteConfirm('<?= site_url('fruits/delete/'.$fruit->id); ?>')" class="btn btn-danger btn-circle m-2" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa-trash"></i></a>
                             </td>
