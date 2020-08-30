@@ -89,4 +89,29 @@ class Fruits extends REST_Controller {
         }
     }
 
+    // request method put
+    public function index_put()
+    {
+        $id = $this->put('id');
+
+        $data = [
+            'id' => $this->put('id'),
+            'name' => $this->put('name'),
+            'price' => $this->put('price'),
+            'image' => $this->put('image')
+        ];
+
+        if ($this->Fruit_model->updateFruits($data, $id) > 0) {
+            $this->response([
+                'status' => true,
+                'message' => 'data has been updated!'
+            ], REST_Controller::HTTP_NO_CONTENT);
+        } else {
+            $this->response([
+                'status' => false,
+                'message' => 'failed to update data!'
+            ], REST_Controller::HTTP_BAD_REQUEST);
+        }
+    }
+
 }
