@@ -35,6 +35,7 @@
                     </thead>
                     <tbody>
                         <?php $index = 1; ?>
+                        
                         <?php foreach($fruits as $fruit) : ?>
                         <tr>
                             <td><?= $index; ?></td>
