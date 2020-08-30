@@ -75,5 +75,16 @@ class Fruits extends CI_Controller {
             redirect('fruits');
         }
     }
+
+    public function delete($id = null)
+    {
+        if (!isset($id)) show_404();
+
+        $fruit = $this->Fruit_model;
+
+        if ($fruit->delete($id)) {
+            redirect('fruits');
+        }
+    }
     
 }
