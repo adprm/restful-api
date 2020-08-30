@@ -22,11 +22,12 @@
                     </thead>
                     <tbody>
                         <?php $index = 1; ?>
+                        <?php foreach($fruits as $fruit) : ?>
                         <tr>
                             <td><?= $index; ?></td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td class="text-center"><img src="<?php echo base_url('assets/img/default.jpg'); ?>" width="64" /></td>
+                            <td><?= $fruit->name; ?></td>
+                            <td><?= $fruit->price; ?></td>
+                            <td class="text-center"><img src="<?php echo base_url('assets/img/'.$fruit->image); ?>" width="64" /></td>
                             <td class="text-center action">
                                 <a href="#" class="btn btn-info btn-circle m-2" data-toggle="tooltip" data-placement="top" title="Detail"><i class="fas fa-info-circle"></i></a>
                                 <a href="#" class="btn btn-success btn-circle m-2" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
@@ -34,6 +35,7 @@
                             </td>
                         </tr>
                         <?php $index++; ?>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
