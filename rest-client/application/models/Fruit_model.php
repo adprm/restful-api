@@ -4,6 +4,16 @@ use GuzzleHttp\Client;
 
 class Fruit_model extends CI_Model {
 
+    private $_client;
+
+    public function __construct()
+    {
+        $this->_client = new Client([
+            'base_uri' => 'http://localhost/restful-api-crud/rest-server/api/',
+            'auth' => ['adit', '050801']
+        ]);
+    }
+
     public function getAll() {
         return $this->db->get('fruits')->result();
     }
