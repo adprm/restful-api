@@ -66,4 +66,27 @@ class Fruits extends REST_Controller {
         }
     }
 
+    // request method post
+    public function index_post()
+    {
+        $data = [
+            'id' => uniqid(),
+            'name' => $this->post('name'),
+            'price' => $this->post('price'),
+            'image' => $this->post('image')
+        ];
+
+        if ($this->Fruit_model->addFruit($data) > 0) {
+            $this->response([
+                'status' => true,
+                'message' => 'new data has been added!'
+            ], REST_Controller::HTTP_CREATED);
+        } else {
+            $this->response([
+                'status' => false,
+                'message' => 'failed to add data!'
+            ], REST_Controller::HTTP_BAD_REQUEST);
+        }
+    }
+
 }
