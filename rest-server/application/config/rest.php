@@ -487,7 +487,7 @@ $config['rest_logs_json_params'] = FALSE;
 |
 | See application/controllers/api/example.php for examples
 */
-$config['rest_enable_limits'] = FALSE;
+$config['rest_enable_limits'] = true;
 
 /*
 |--------------------------------------------------------------------------
