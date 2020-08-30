@@ -17,4 +17,10 @@ class Fruit_model extends CI_Model {
         return $this->db->affected_rows();
     }
 
+    public function addFruit($data)
+    {
+        $this->db->insert('fruits', $data);
+        return $this->db->affected_rows();
+    }
+
 }
