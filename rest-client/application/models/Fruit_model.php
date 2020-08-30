@@ -10,4 +10,19 @@ class Fruit_model extends CI_Model {
         return $this->db->get_where('fruits', ['id' => $id])->row();
     }
 
+    public function save() {
+        $post = $this->input->post();
+        $this->id = uniqid();
+        $this->name = $post['name'];
+        $this->price = $post['price'];
+        $this->image = $this->_uploadImage();
+
+        return $this->db->insert('fruits', $this);
+        
+    }
+
+    private function _uploadImage() {
+        
+    }
+
 }
