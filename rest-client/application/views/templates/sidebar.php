@@ -13,7 +13,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item <?php if($this->uri->segment(1)=="overview"){echo "active";}?>">
+    <li class="nav-item <?php if($this->uri->segment(1)=="overview"){echo "active";} ?>">
         <a class="nav-link" href="<?= base_url('overview'); ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i><span>Dashboard</span>
         </a>
@@ -28,7 +28,7 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item <?php if($this->uri->segment(1)=="fruits"){echo "active";} ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-apple-alt"></i>
             <span>Fruits Data</span>
@@ -36,7 +36,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Data</h6>
-                <a class="collapse-item" href="buttons.html">List</a>
+                <a class="collapse-item" href="<?= base_url('fruits'); ?>">List</a>
                 <a class="collapse-item" href="cards.html">Add Data</a>
             </div>
         </div>
