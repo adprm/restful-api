@@ -38,4 +38,32 @@ class Fruits extends REST_Controller {
         }
     }
 
+    // request method delete
+    public function index_delete()
+    {
+        $id = $this->delete('id');
+
+        if ($id === null) {
+            $this->response([
+                'status' => false,
+                'data' => 'provide an id!'
+            ], REST_Controller::HTTP_BAD_REQUEST);
+        } else {
+            if ($this->Fruit_model->deleteFruits($id) > 0) {
+                // ok
+                $this->response([
+                    'status' => true,
+                    'id' => $id,
+                    'message' => 'deleted the resource!'
+                ], REST_Controller::HTTP_NO_CONTENT);
+            } else {
+                // id not found
+                $this->response([
+                    'status' => false,
+                    'message' => 'id not found!'
+                ], REST_Controller::HTTP_BAD_REQUEST);
+            }
+        }
+    }
+
 }
