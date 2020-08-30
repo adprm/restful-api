@@ -86,5 +86,17 @@ class Fruits extends CI_Controller {
             redirect('fruits');
         }
     }
+
+    public function detail($id)
+    {
+        $data['title'] = 'Info Data Detail';
+        $data['fruit'] = $this->Fruit_model->getById($id);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
+        $this->load->view('fruit/detail', $data);
+        $this->load->view('templates/footer');
+    }
     
 }
