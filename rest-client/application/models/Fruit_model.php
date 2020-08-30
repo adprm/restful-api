@@ -1,5 +1,7 @@
 <?php
 
+use GuzzleHttp\Client;
+
 class Fruit_model extends CI_Model {
 
     public function getAll() {
