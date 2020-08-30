@@ -37,6 +37,8 @@ class Fruit_model extends CI_Model {
         return $this->db->update('fruits', $this, array('id' => $post['id']));
     }
 
+    
+
     private function _uploadImage() {
         $config['upload_path']      = './assets/img/';
         $config['allowed_types']    = 'jpg|jpeg|png';
@@ -51,6 +53,15 @@ class Fruit_model extends CI_Model {
         }
 
         return "default.jpg";
+    }
+
+    private function _deleteImage($id) {
+        $fruit = $this->getById($id);
+
+        if ($fruit->image != "default.jpg") {
+            $file_name = explode(".", $fruit->image)[0];
+            return array_map('unlink', glob(FCPATH. "assets/img/$file_name.*"));
+        }
     }
 
 }
