@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('overview'); ?>">
       <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-apple-alt"></i>
       </div>
@@ -13,8 +13,8 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="index.html">
+    <li class="nav-item <?php if($this->uri->segment(1)=="overview"){echo "active";}?>">
+        <a class="nav-link" href="<?= base_url('overview'); ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i><span>Dashboard</span>
         </a>
     </li>
