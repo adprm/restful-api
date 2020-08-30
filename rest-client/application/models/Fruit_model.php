@@ -21,6 +21,22 @@ class Fruit_model extends CI_Model {
         
     }
 
+    public function update() {
+        $post = $this->input->post();
+        $this->id = $post['id'];
+        $this->name = $post['name'];
+        $this->price = $post['price'];
+        $this->image = $this->_uploadImage();
+
+        if (!empty($_FILES['image']['name'])) {
+            $this->image = $this->_uploadImage();
+        } else {
+            $this->image = $post['old_image'];
+        }
+
+        return $this->db->update('fruits', $this, array('id' => $post['id']));
+    }
+
     private function _uploadImage() {
         $config['upload_path']      = './assets/img/';
         $config['allowed_types']    = 'jpg|jpeg|png';
