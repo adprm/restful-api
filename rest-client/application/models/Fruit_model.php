@@ -37,7 +37,10 @@ class Fruit_model extends CI_Model {
         return $this->db->update('fruits', $this, array('id' => $post['id']));
     }
 
-    
+    public function delete($id) {
+        $this->_deleteImage($id);
+        $this->db->delete('fruits', array('id' => $id));
+    }
 
     private function _uploadImage() {
         $config['upload_path']      = './assets/img/';
