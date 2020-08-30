@@ -22,7 +22,19 @@ class Fruit_model extends CI_Model {
     }
 
     private function _uploadImage() {
-        
+        $config['upload_path']      = './assets/img/';
+        $config['allowed_types']    = 'jpg|jpeg|png';
+        $config['file_name']        = $this->id;
+        $config['overwrite']        = true;
+        $config['max_size']         = '10000';
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('image')) {
+            return $this->upload->data('file_name');
+        }
+
+        return "default.jpg";
     }
 
 }
