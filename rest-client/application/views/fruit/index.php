@@ -36,7 +36,7 @@
                     <tbody>
                         <?php $index = 1; ?>
 
-                        <?php foreach($fruits as $fruit) : ?>
+                        <?php foreach ($fruits as $fruit) : ?>
                         <tr>
                             <td><?= $index; ?></td>
                             <td><?= $fruit['name']; ?></td>
