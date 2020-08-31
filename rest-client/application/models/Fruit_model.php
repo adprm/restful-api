@@ -38,15 +38,17 @@ class Fruit_model extends CI_Model {
 
         $result = json_decode($response->getBody()->getContents(), true);
 
-        return $result['data'][0];
+        return $result['data'];
     }
 
     public function save() {
+        $id = uniqid();
+
         $data = [
-            'id' => uniqid(),
+            'id' => $id,
             'name' => $this->input->post('name', true),
             'price' => $this->input->post('price', true),
-            'image' => $this->_uploadImage(),
+            'image' => $this->_uploadImage($id),
             'apikey' => '050801'
         ];
 
@@ -62,16 +64,17 @@ class Fruit_model extends CI_Model {
     }
 
     public function update() {
+        $id = $this->input->post('id', true);
+
         $data = [
-            'id' => $this->input->post('id', true),
+            'id' => $id,
             'name' => $this->input->post('name', true),
             'price' => $this->input->post('price', true),
-            'image' => $this->_uploadImage(),
             'apikey' => '050801'
         ];
 
         if (!empty($_FILES['image']['name'])) {
-            $this->image = $this->_uploadImage();
+            $data['image'] = $this->_uploadImage($id);
         } else {
             $this->image = $post['old_image'];
         }
@@ -89,13 +92,19 @@ class Fruit_model extends CI_Model {
 
     public function delete($id) {
         $this->_deleteImage($id);
-        return $this->db->delete('fruits', array('id' => $id));
+        // return $this->db->delete('fruits', array('id' => $id));
+        $response = $this->_client->request('DELETE', 'fruits', [
+            'form_params' => [
+                'id' => $id,
+                'apikey' => '050801'
+            ]
+        ]);
     }
 
-    private function _uploadImage() {
+    private function _uploadImage($id) {
         $config['upload_path']      = './assets/img/';
         $config['allowed_types']    = 'jpg|jpeg|png';
-        $config['file_name']        = $this->id;
+        $config['file_name']        = $id;
         $config['overwrite']        = true;
         $config['max_size']         = '10000';
 
@@ -111,8 +120,8 @@ class Fruit_model extends CI_Model {
     private function _deleteImage($id) {
         $fruit = $this->getById($id);
 
-        if ($fruit->image != "default.jpg") {
-            $file_name = explode(".", $fruit->image)[0];
+        if ($fruit['image'] != "default.jpg") {
+            $file_name = explode(".", $fruit['image'])[0];
             return array_map('unlink', glob(FCPATH. "assets/img/$file_name.*"));
         }
     }
