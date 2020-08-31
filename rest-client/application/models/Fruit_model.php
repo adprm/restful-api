@@ -62,11 +62,13 @@ class Fruit_model extends CI_Model {
     }
 
     public function update() {
-        $post = $this->input->post();
-        $this->id = $post['id'];
-        $this->name = $post['name'];
-        $this->price = $post['price'];
-        $this->image = $this->_uploadImage();
+        $data = [
+            'id' => $this->input->post('id', true),
+            'name' => $this->input->post('name', true),
+            'price' => $this->input->post('price', true),
+            'image' => $this->_uploadImage(),
+            'apikey' => '050801'
+        ];
 
         if (!empty($_FILES['image']['name'])) {
             $this->image = $this->_uploadImage();
@@ -74,7 +76,15 @@ class Fruit_model extends CI_Model {
             $this->image = $post['old_image'];
         }
 
-        return $this->db->update('fruits', $this, array('id' => $post['id']));
+        $response = $this->_client->request('PUT', 'fruits', [
+            'form_params' => $data
+        ]);
+
+        $result = json_decode($response->getBody()->getContents(), true);
+
+        return $result;
+
+        // return $this->db->update('fruits', $data, array('id' => $post['id']));
     }
 
     public function delete($id) {
