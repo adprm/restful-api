@@ -42,14 +42,23 @@ class Fruit_model extends CI_Model {
     }
 
     public function save() {
-        $post = $this->input->post();
-        $this->id = uniqid();
-        $this->name = $post['name'];
-        $this->price = $post['price'];
-        $this->image = $this->_uploadImage();
+        $data = [
+            'id' => uniqid(),
+            'name' => $this->input->post('name', true),
+            'price' => $this->input->post('price', true),
+            'image' => $this->_uploadImage(),
+            'apikey' => '050801'
+        ];
 
-        return $this->db->insert('fruits', $this);
-        
+        // return $this->db->insert('fruits', $data);
+
+        $response = $this->_client->request('POST', 'fruits', [
+            'form_params' => $data            
+        ]);
+
+        $result = json_decode($response->getBody()->getContents(), true);
+
+        return $result['data'];   
     }
 
     public function update() {
