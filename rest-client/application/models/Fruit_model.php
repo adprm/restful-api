@@ -28,7 +28,17 @@ class Fruit_model extends CI_Model {
     }
 
     public function getById($id) {
-        return $this->db->get_where('fruits', ['id' => $id])->row();
+        // return $this->db->get_where('fruits', ['id' => $id])->row();
+        $response = $this->_client->request('GET', 'fruits', [
+            'query' => [
+                'apikey' => '050801',
+                'id' => $id
+            ]
+        ]);
+
+        $result = json_decode($response->getBody()->getContents(), true);
+
+        return $result['data'][0];
     }
 
     public function save() {
