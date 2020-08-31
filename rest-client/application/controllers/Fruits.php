@@ -85,6 +85,8 @@ class Fruits extends CI_Controller {
         if ($fruit->delete($id)) {
             redirect('fruits');
         }
+
+        redirect('fruits');
     }
 
     public function detail($id)
