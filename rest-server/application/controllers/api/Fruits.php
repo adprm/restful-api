@@ -76,7 +76,7 @@ class Fruits extends REST_Controller {
     public function index_post()
     {
         $data = [
-            'id' => uniqid(),
+            'id' => $this->post('id'),
             'name' => $this->post('name'),
             'price' => $this->post('price'),
             'image' => $this->post('image')
