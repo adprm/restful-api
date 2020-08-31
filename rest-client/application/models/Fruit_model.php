@@ -15,7 +15,16 @@ class Fruit_model extends CI_Model {
     }
 
     public function getAll() {
-        return $this->db->get('fruits')->result();
+        // return $this->db->get('fruits')->result();
+        $response = $this->_client->request('GET', 'fruits', [
+            'query' => [
+                'apikey' => '050801'
+            ]
+        ]);
+
+        $result = json_decode($response->getBody()->getContents(), true);
+
+        return $result['data'];
     }
 
     public function getById($id) {
