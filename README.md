@@ -34,10 +34,30 @@ value: 050801
 
 ```
 key :   apikey
-        id`
+        id
 ```
 
 > Post
+
+```
+key :   apikey
+        id
+        name
+        price
+        image
+```
+
+> Put / Update
+
+```
+key :   apikey
+        id
+        name
+        price
+        image
+```
+
+> Delete
 
 ```
 key :   apikey
