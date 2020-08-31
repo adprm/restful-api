@@ -5,7 +5,7 @@ RESTful API CRUD features with CodeIgniter
 
 > Create a Database with the name **restful_api_crud**
 
-> Import the database file **restful_api_crud.sql** to the MySQL DBMS
+> Import the database file **restful-api.sql** to the MySQL DBMS
 
 > Install Guzzle HTTP Client with composer in the **rest-client** folder
 
@@ -15,9 +15,10 @@ RESTful API CRUD features with CodeIgniter
 
 > Run the rest-server Application with the url `http://localhost/restful-api/rest-server/`
 
-> Do a test on Postman with the API url `http://localhost/restful-api/rest-server/api/fruits`
 
 ### API Params
+
+> Do a test on Postman with the API url `http://localhost/restful-api/rest-server/api/fruits`
 
 > Basic auth `username: adit` / `password: 050801`
 
