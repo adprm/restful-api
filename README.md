@@ -18,3 +18,32 @@ RESTful API CRUD features with CodeIgniter
 > Run the rest-server Application with the url `http://localhost/restful-api-crud/rest-server/`
 
 > Do a test on Postman with the API url `http://localhost/restful-api-crud/rest-client/fruits`
+
+### API Params
+
+> Basic auth `username: adit` / `password: 050801`
+
+> Get All Data 
+
+```
+key: apikey  
+value: 050801
+```
+
+> Get By Id
+
+```
+key :   apikey
+        id`
+```
+
+> Post
+
+```
+key :   apikey
+        id
+        name
+        price
+        image
+```
+
