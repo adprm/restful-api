@@ -12,27 +12,27 @@
         <div class="card-body">
             <?= $this->session->flashdata('message'); ?>
             <form action="" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="id" value="<?= $fruit->id; ?>" />
+                <input type="hidden" name="id" value="<?= $fruit['id']; ?>" />
                 <!-- edit name -->
                 <div class="form-group">
                     <label for="name">Name*</label>
-                    <input type="text" class="form-control" id="name" name="name" value="<?= $fruit->name; ?>">
+                    <input type="text" class="form-control" id="name" name="name" value="<?= $fruit['name']; ?>">
                     <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <!-- edit price -->
                 <div class="form-group">
                     <label for="price">Price*</label>
-                    <input type="number" class="form-control" id="price" name="price" value="<?= $fruit->price; ?>">
+                    <input type="number" class="form-control" id="price" name="price" value="<?= $fruit['price']; ?>">
                     <?= form_error('price', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
                 <div class="form-group">
-                    <img src="<?php echo base_url('assets/img/'.$fruit->image); ?>" width="100" />
+                    <img src="<?php echo base_url('assets/img/'.$fruit['image']); ?>" width="100" />
                 </div>
                 <div class="form-group">
                     <label for="image">Photo</label>
                     <input class="form-control-file <?php echo form_error('image') ? 'is-invalid':'' ?>"
                      type="file" name="image" />
-                    <input type="hidden" name="old_image" value="<?php echo $fruit->image ?>" />
+                    <input type="hidden" name="old_image" value="<?php echo $fruit['image'] ?>" />
                     <div class="invalid-feedback">
                     	<?php echo form_error('image') ?>
                     </div>
