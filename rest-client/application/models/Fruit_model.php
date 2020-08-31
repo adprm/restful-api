@@ -9,7 +9,7 @@ class Fruit_model extends CI_Model {
     public function __construct()
     {
         $this->_client = new Client([
-            'base_uri' => 'http://localhost/restful-api-crud/rest-server/api/',
+            'base_uri' => 'http://localhost/restful-api/rest-server/api/',
             'auth' => ['adit', '050801']
         ]);
     }

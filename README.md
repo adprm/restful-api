@@ -11,13 +11,11 @@ RESTful API CRUD features with CodeIgniter
 
 > Command Install Guzzle Http Client `composer require guzzlehttp/guzzle:^6.3`
 
-> Run the rest-client Application with the url `http://localhost/restful-api-crud/rest-client/`
+> Run the rest-client Application with the url `http://localhost/restful-api/rest-client/`
 
-> Run the rest-server Application with the url `http://localhost/restful-api-crud/rest-server/`
+> Run the rest-server Application with the url `http://localhost/restful-api/rest-server/`
 
-> Run the rest-server Application with the url `http://localhost/restful-api-crud/rest-server/`
-
-> Do a test on Postman with the API url `http://localhost/restful-api-crud/rest-client/fruits`
+> Do a test on Postman with the API url `http://localhost/restful-api/rest-server/api/fruits`
 
 ### API Params
 
