@@ -15,7 +15,6 @@ class Fruit_model extends CI_Model {
     }
 
     public function getAll() {
-        // return $this->db->get('fruits')->result();
         $response = $this->_client->request('GET', 'fruits', [
             'query' => [
                 'apikey' => '050801'
@@ -28,7 +27,6 @@ class Fruit_model extends CI_Model {
     }
 
     public function getById($id) {
-        // return $this->db->get_where('fruits', ['id' => $id])->row();
         $response = $this->_client->request('GET', 'fruits', [
             'query' => [
                 'apikey' => '050801',
@@ -51,8 +49,6 @@ class Fruit_model extends CI_Model {
             'image' => $this->_uploadImage($id),
             'apikey' => '050801'
         ];
-
-        // return $this->db->insert('fruits', $data);
 
         $response = $this->_client->request('POST', 'fruits', [
             'form_params' => $data            
@@ -86,13 +82,10 @@ class Fruit_model extends CI_Model {
         $result = json_decode($response->getBody()->getContents(), true);
 
         return $result;
-
-        // return $this->db->update('fruits', $data, array('id' => $post['id']));
     }
 
     public function delete($id) {
         $this->_deleteImage($id);
-        // return $this->db->delete('fruits', array('id' => $id));
         $response = $this->_client->request('DELETE', 'fruits', [
             'form_params' => [
                 'id' => $id,
