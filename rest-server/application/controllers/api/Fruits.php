@@ -13,10 +13,10 @@ class Fruits extends REST_Controller {
         $this->load->model('Fruit_model');
 
         // limit apikey
-        $this->methods['index_get']['limit'] = 100;
-        $this->methods['index_delete']['limit'] = 100;
-        $this->methods['index_post']['limit'] = 100;
-        $this->methods['index_put']['limit'] = 100;
+        $this->methods['index_get']['limit'] = 1000;
+        $this->methods['index_delete']['limit'] = 1000;
+        $this->methods['index_post']['limit'] = 1000;
+        $this->methods['index_put']['limit'] = 1000;
     }
 
     // request method get all and by id
