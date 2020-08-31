@@ -12,11 +12,11 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="<?= base_url('assets/img/'.$fruit->image) ?>" class="img-fluid">
+                        <img src="<?= base_url('assets/img/'.$fruit['image']); ?>" class="img-fluid">
                     </div>
                     <div class="col-md-4">
-                        <h5 class="card-title">Fruit Name : <?= $fruit->name; ?></h5></li>
-                        <h6 class="card-subtitle mb-2 text-muted">Price : <?= $fruit->price; ?></h6></li>
+                        <h5 class="card-title">Fruit Name : <?= $fruit['name']; ?></h5></li>
+                        <h6 class="card-subtitle mb-2 text-muted">Price : <?= $fruit['price']; ?></h6></li>
                     </div>
                 </div>
             </div>
